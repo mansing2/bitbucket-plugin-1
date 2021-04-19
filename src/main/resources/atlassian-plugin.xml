@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="pcc-plugin"/>  
+  <!-- add our web resources -->  
+  <web-resource key="pcc-plugin-resources" name="pcc-plugin Web Resources"> 
+    <dependency>com.atlassian.auiplugin:dialog2</dependency>
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="pcc-plugin.css" location="/css/pcc-plugin.css" />
+    <resource type="download" name="pcc-plugin.js" location="/js/pcc-plugin.js" />
+    <context>bitbucket.page.repository.filebrowser</context>
+  </web-resource>  
+  <web-panel key="my-panel" location="bitbucket.web.repository.browse.filebrowser.before">
+    <resource name="view" type="velocity" location="/templates/new.vm" />
+  </web-panel>
+</atlassian-plugin>
